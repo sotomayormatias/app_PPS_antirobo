@@ -1,0 +1,46 @@
+page-principal {
+    .grey{
+        background-color: #333333;
+    } 
+
+    .label_green {
+        text-align: center;
+        color: #86C232;
+        margin: 40px 0 !important;
+        font-size: 40px;
+    }
+
+    .label_red {
+        text-align: center;
+        color: red;
+        margin: 40px 0 !important;
+        font-size: 40px;
+    }
+
+    .btn_green {
+        margin: 20px auto;
+        display:block;
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        background-color: #86C232;
+        border: 1px solid rgb(101, 146, 38);
+    }
+
+    .btn_red {
+        margin: 20px auto;
+        display:block;
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        background-color: red;
+        border: 1px solid rgb(146, 38, 38);
+    }
+
+    #imagePadlock {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80px;
+    }
+}

@@ -8,6 +8,12 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { DeviceMotion } from "@ionic-native/device-motion";
+import { Flashlight } from "@ionic-native/flashlight";
+import { Vibration } from "@ionic-native/vibration";
+import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
+import { NativeAudio } from '@ionic-native/native-audio';
+import { AndroidPermissions } from "@ionic-native/android-permissions";
 
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
@@ -62,6 +68,12 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
+    DeviceMotion,
+    Flashlight,
+    Vibration,
+    SmartAudioProvider,
+    NativeAudio,
+    AndroidPermissions,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }

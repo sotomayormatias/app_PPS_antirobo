@@ -1,0 +1,29 @@
+<ion-content class="grey">
+  <!-- <ion-label>Alarma<br>{{ leyendaStatusAlarma }}</ion-label> -->
+  <ion-label *ngIf="status" class="label_green">Alarma<br>activada</ion-label>
+  <ion-label *ngIf="!status" class="label_red">Alarma<br>desactivada</ion-label>
+
+  <!-- <img id="imagePadlock" src="../../assets/img/{{ imageRender }}.png"> -->
+  <img id="imagePadlock" *ngIf="status" src="../../assets/img/lock.png">
+  <img id="imagePadlock" *ngIf="!status" src="../../assets/img/unlock_1.png">
+
+  <ion-row>
+    <ion-col>
+      <!-- <button ion-button block color="primary" type="button" class="btn btn-primary" (click)="toggleAlarma()">{{ leyendaBoton }}</button> -->
+      <button ion-button block color="primary" type="button" class="btn_green btn-primary" (click)="toggleAlarma()"
+        *ngIf="status">Desactivar alarma</button>
+      <button ion-button block color="primary" type="button" class="btn_red btn-primary" (click)="toggleAlarma()" *ngIf="!status">Activar
+        alarma</button>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-card *ngIf="data">
+      <ion-card-content>
+        <h2>x: {{data.x | number: '1.4-4'}}</h2>
+        <h2>y: {{data.y | number: '1.4-4'}}</h2>
+        <h2>z: {{data.z | number: '1.4-4'}}</h2>
+      </ion-card-content>
+    </ion-card>
+  </ion-row> -->
+
+</ion-content>

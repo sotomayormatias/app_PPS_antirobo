@@ -3,6 +3,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
+import * as firebase from 'firebase';
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
+import { Flashlight } from "@ionic-native/flashlight";
+import { Vibration } from "@ionic-native/vibration";
+import { AndroidPermissions } from "@ionic-native/android-permissions";
 
 import { FirstRunPage } from '../pages';
 import { Settings } from '../providers';
@@ -45,14 +51,34 @@ export class MyApp {
     { title: 'Search', component: 'SearchPage' }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private translate: TranslateService, 
+    platform: Platform, 
+    settings: Settings, 
+    private config: Config, 
+    private statusBar: StatusBar, 
+    private splashScreen: SplashScreen,
+    smartAudio: SmartAudioProvider,
+    flash: Flashlight,
+    vibration: Vibration,
+    permissions: AndroidPermissions) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      permissions.requestPermissions([
+        permissions.PERMISSION.FLASHLIGHT,
+        permissions.PERMISSION.VIBRATE
+      ]);
+
+      smartAudio.preload('izquierda', 'assets/audio/izquierda.mp3');
+      smartAudio.preload('derecha', 'assets/audio/derecha.mp3');
+      smartAudio.preload('luz', 'assets/audio/luz.mp3');
+      smartAudio.preload('vibracion', 'assets/audio/vibracion.mp3');
     });
     this.initTranslate();
+    firebase.initializeApp(FIREBASE_CONFIG);
   }
 
   initTranslate() {
